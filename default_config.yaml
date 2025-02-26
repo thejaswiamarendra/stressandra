@@ -1,0 +1,45 @@
+hosts:
+  - host: 127.0.0.1
+    port: 9042
+    jmx_port: 7199
+  - host: 127.0.0.1
+    port: 9043
+    jmx_port: 7200
+  - host: 127.0.0.1
+    port: 9044
+    jmx_port: 7201
+replication_factor: 2
+rate: 1000
+duration: 600
+warmup_duration: 240
+keyspace: stressandra_test_ks
+table: stressandra_test_table
+write_test: True
+read_test: False
+consistency: ANY
+jmx_metrics:
+  - name: Write Latency Mean
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Latency/Mean
+    unit: ms
+  - name: Write Latency 99th Percentile
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Latency/99thPercentile
+    unit: ms
+  - name: Write Latency One Minute Rate
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Latency/OneMinuteRate
+    unit: ms
+  - name: Write Time Outs Count
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Timeouts/Count
+    unit: null
+  - name: Write Time Outs One Minute Rate
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Timeouts/OneMinuteRate
+    unit: null
+  - name: Write Unavailables Count
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Unavailables/Count
+    unit: null
+  - name: Write Unavailables One Minute Rate
+    mbean: org.apache.cassandra.metrics:type=ClientRequest,scope=Write,name=Unavailables/OneMinuteRate
+    unit: null
+  - name: Load
+    mbean: org.apache.cassandra.metrics:type=Storage,name=Load
+    unit: null
+logs: STDOUT

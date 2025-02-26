@@ -1,0 +1,6 @@
+cassandra-driver
+psutil
+argparse
+jmxquery
+pyyaml
+tqdm
